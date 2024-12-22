@@ -1,10 +1,10 @@
 #ifndef GBUFFER_GLSL
 #define GBUFFER_GLSL
 
-#include "../../defines.glsl"
-#include "../../utility/normal_mapping.glsl"
-#include "../../material.glsl"
-#include "../../trace/trace.glsl"
+#include "../defines.glsl"
+#include "../utility/normal_mapping.glsl"
+#include "../material.glsl"
+#include "../trace/trace.glsl"
 
 bool pixelInfoFromGBuffer(in const vec3 origin, in const GBuffer gBuffer, out ReSTIRPixelInfo pixelInfo) {
     // handle error or sky hit

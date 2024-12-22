@@ -29,6 +29,12 @@ namespace raven {
             createDescriptorPool();
             createDescriptorSets();
             createPipelineLayout();
+            vk::PipelineCacheCreateInfo pipelineCacheCreateInfo{};
+            pipelineCacheCreateInfo.initialDataSize = 0;
+            pipelineCacheCreateInfo.pInitialData = nullptr;
+            if (m_gpuContext->m_device.createPipelineCache(&pipelineCacheCreateInfo, nullptr, &m_pipelineCache) != vk::Result::eSuccess) {
+                throw std::runtime_error("Failed to create pipeline cache!");
+            }
             createPipeline();
 
             createUniforms();
@@ -40,12 +46,13 @@ namespace raven {
 
             releaseUniforms();
 
-            vkDestroyDescriptorPool(m_gpuContext->m_device, m_descriptorPool, nullptr);
+            m_gpuContext->m_device.destroyDescriptorPool(m_descriptorPool);
             for (auto &descriptorSetLayout: m_descriptorSetLayouts) {
-                vkDestroyDescriptorSetLayout(m_gpuContext->m_device, descriptorSetLayout, nullptr);
+                m_gpuContext->m_device.destroyDescriptorSetLayout(descriptorSetLayout);
             }
             m_gpuContext->m_device.destroyPipeline(m_pipeline);
-            vkDestroyPipelineLayout(m_gpuContext->m_device, m_pipelineLayout, nullptr);
+            m_gpuContext->m_device.destroyPipelineCache(m_pipelineCache);
+            m_gpuContext->m_device.destroyPipelineLayout(m_pipelineLayout);
             for (const auto &shader: m_shaders) {
                 shader->release();
             }
@@ -279,6 +286,7 @@ namespace raven {
 
         std::vector<std::shared_ptr<Shader>> m_shaders; // either one compute shader or vertex/framgment shader pair or raygen/closesthit/miss/... shaders touple
 
+        vk::PipelineCache m_pipelineCache{};
         vk::PipelineLayout m_pipelineLayout{};
         vk::Pipeline m_pipeline{};
 

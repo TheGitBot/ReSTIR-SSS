@@ -65,7 +65,7 @@ namespace raven {
             pipelineInfo.layout = m_pipelineLayout;
             pipelineInfo.stage = shaderStage;
 
-            if (m_gpuContext->m_device.createComputePipelines(VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &m_pipeline) != vk::Result::eSuccess) {
+            if (m_gpuContext->m_device.createComputePipelines(m_pipelineCache, 1, &pipelineInfo, nullptr, &m_pipeline) != vk::Result::eSuccess) {
                 throw std::runtime_error("Failed to create compute pipeline!");
             }
         }

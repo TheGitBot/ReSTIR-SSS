@@ -97,7 +97,7 @@ namespace raven {
             pipelineInfo.maxPipelineRayRecursionDepth = 1;
             pipelineInfo.layout = m_pipelineLayout;
 
-            if (m_gpuContext->m_device.createRayTracingPipelinesKHR(VK_NULL_HANDLE, VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &m_pipeline) != vk::Result::eSuccess) {
+            if (m_gpuContext->m_device.createRayTracingPipelinesKHR(VK_NULL_HANDLE, m_pipelineCache, 1, &pipelineInfo, nullptr, &m_pipeline) != vk::Result::eSuccess) {
                 throw std::runtime_error("Failed to create ray tracing pipeline!");
             }
         }
