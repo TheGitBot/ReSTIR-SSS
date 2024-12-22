@@ -266,7 +266,7 @@ namespace raven {
         void createDenoiserEngine(GPUContext *gpuContext, vk::Extent2D extent);
         void releaseDenoiserEngine() const;
 
-        void loadPreset(const std::string &preset);
+        void loadPreset(GPUContext *gpuContext, const std::string &preset);
 
         static bool vec3FromString(const std::string &str, glm::vec3 *position) {
             const std::regex rgx("([+-]?[0-9]*[.]?[0-9]+) ([+-]?[0-9]*[.]?[0-9]+) ([+-]?[0-9]*[.]?[0-9]+)");

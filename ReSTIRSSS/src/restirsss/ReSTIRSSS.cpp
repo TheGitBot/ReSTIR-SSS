@@ -255,7 +255,7 @@ namespace raven {
         }
 
         if (m_preset.has_value()) {
-            loadPreset(m_preset.value());
+            loadPreset(nullptr, m_preset.value());
         }
     }
 
@@ -469,15 +469,15 @@ namespace raven {
 
         if (ImGui::CollapsingHeader("Presets", ImGuiTreeNodeFlags_DefaultOpen)) {
             if (ImGui::Button("Path Tracing")) {
-                loadPreset("pathtracing");
+                loadPreset(gpuContext, "pathtracing");
                 resetFrame(gpuContext);
             }
             if (ImGui::Button("ReSTIR SSS (Hybrid Shift)")) {
-                loadPreset("hybrid");
+                loadPreset(gpuContext, "hybrid");
                 resetFrame(gpuContext);
             }
             if (ImGui::Button("ReSTIR SSS (Sequential Shift)")) {
-                loadPreset("sequential");
+                loadPreset(gpuContext, "sequential");
                 resetFrame(gpuContext);
             }
         }
@@ -1631,7 +1631,7 @@ namespace raven {
 #endif
     }
 
-    void ReSTIRSSS::loadPreset(const std::string &preset) {
+    void ReSTIRSSS::loadPreset(GPUContext *gpuContext, const std::string &preset) {
         if (preset == "pathtracing") {
             m_renderOptions.m_sss = true;
             m_renderOptions.m_renderer = RENDERER_PATHTRACE;
@@ -1647,6 +1647,10 @@ namespace raven {
             m_reSTIROptions.m_spatial = true;
             m_reSTIROptions.m_spatial_count = 4;
             m_reSTIROptions.m_spatial2 = false;
+            if (gpuContext) {
+                gpuContext->m_device.waitIdle();
+                m_ReSTIRSSSPassSpatialReuse->updateSpecializationConstant3(m_reSTIROptions.m_spatial_count);
+            }
         } else if (preset == "sequential") {
             m_renderOptions.m_sss = true;
             m_renderOptions.m_renderer = RENDERER_RESTIRSSS;
@@ -1661,6 +1665,11 @@ namespace raven {
             m_reSTIROptions.m_spatial2 = true;
             m_reSTIROptions.m_spatial2_count = 2;
             m_reSTIROptions.m_spatial2_shift_sequential = RESTIRSSS_SHIFT_DELAYED_RECONNECTION;
+            if (gpuContext) {
+                gpuContext->m_device.waitIdle();
+                m_ReSTIRSSSPassSpatialReuse->updateSpecializationConstant3(m_reSTIROptions.m_spatial_count);
+                m_ReSTIRSSSPassSpatialReuse2->updateSpecializationConstant3(m_reSTIROptions.m_spatial2_count);
+            }
         }
     }
 } // namespace raven
