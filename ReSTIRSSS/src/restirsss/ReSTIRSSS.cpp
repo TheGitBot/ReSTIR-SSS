@@ -323,7 +323,7 @@ namespace raven {
         m_ReSTIRSSSPassSpatialReuse->setStorageBuffer(0, 10, m_raydata.m_objectDescriptorBuffer.get());
         m_ReSTIRSSSPassSpatialReuse->setSamplerImages(0, 20, images, vk::ImageLayout::eReadOnlyOptimal);
         m_ReSTIRSSSPassSpatialReuse->setSamplerImage(0, 21, m_raydata.m_textureEnvironment.get(), vk::ImageLayout::eReadOnlyOptimal);
-        for (int i = 1; i < 8; i++) {
+        for (int i = 1; i <= 8; i++) {
             std::cout << "Precompiling spatial reuse pass with specilization constants... g_restir_spatial_count=" << i << " (" << i << "/8)" << std::endl;
             m_ReSTIRSSSPassSpatialReuse->updateSpecializationConstant3(i);
         }
@@ -336,7 +336,7 @@ namespace raven {
         m_ReSTIRSSSPassSpatialReuse2->setStorageBuffer(0, 10, m_raydata.m_objectDescriptorBuffer.get());
         m_ReSTIRSSSPassSpatialReuse2->setSamplerImages(0, 20, images, vk::ImageLayout::eReadOnlyOptimal);
         m_ReSTIRSSSPassSpatialReuse2->setSamplerImage(0, 21, m_raydata.m_textureEnvironment.get(), vk::ImageLayout::eReadOnlyOptimal);
-        for (int i = 1; i < 8; i++) {
+        for (int i = 1; i <= 8; i++) {
             std::cout << "Precompiling spatial reuse pass 2 with specilization constants... g_restir_spatial_count=" << i << " (" << i << "/8)" << std::endl;
             m_ReSTIRSSSPassSpatialReuse2->updateSpecializationConstant3(i);
         }
