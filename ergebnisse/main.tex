@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\title{ReSTIRSSS Ergebnisse}
+\author{Felix Viering}
+\begin{document}
+\maketitle
+\section{Versuch}
+Die Szene "Ajax" wurde auf einem Linux-System mit einer AMD Radeon RX 9070 XT
+Grafikkarte, welche hardwarebeschleunigtes Raytracing unterstützt, getestet.
+Die Einstellung \emph{Max Frames} wurde auf den Wert 2048 eingestellt und es
+wurden die Presets \emph{Path Tracing}, \emph{ReSTIRSSS (Hybrid Shift)},
+\emph{ReSTIRSSS (Sequential Shift)} verwendet. Es wurden die Zeiten aufgenommen,
+die das Rendern eines Frames bei den unterschiedlichen Einstellungen dauert und
+die resultierenden Bilder nach dem Rendern der maximalen Anzahl an Frames verglichen.
+
+\section{Ergebnisse}
+Die Renderzeiten lassen sich aus Tabelle 1 ableiten. 
+\begin{table}
+    \caption{Renderzeiten}\label{tab:}
+    \begin{center}
+        \begin{tabular}[c]{|l|l|l|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Path Tracing}} & 
+            \multicolumn{1}{c|}{\textbf{ReSTIRSSS (Hybrid Shift)}} &
+            \multicolumn{1}{c|}{\textbf{ReSTIRSSS (Sequential Shift)}}\\
+            \hline
+            0,839ms & 4,319ms & 4,784ms \\
+
+
+            
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{./PathTracing.png.hdr}
+    \end{center}
+    \caption{}\label{fig:}
+\end{figure}
+
+
+
+\end{document}

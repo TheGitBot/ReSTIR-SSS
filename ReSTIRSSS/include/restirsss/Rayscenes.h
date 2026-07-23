@@ -76,8 +76,8 @@ namespace raven {
                 scene.loadScene(&sceneLoader);
 
                 scene.getMaterial("ajax")->m_material.baseColorFactor = glm::vec4(0.83f, 0.79f, 0.75f, 0.f);
-                scene.getMaterial("ajax")->m_material.subsurface = 0.5f;
-                //            scene.getMaterial("ajax")->m_material.mfpFromVolumetricCoefficients(glm::vec3(2.19f, 2.62f, 3.f), glm::vec3(0.0021f, 0.0041f, 0.0071f)); // marble
+                scene.getMaterial("ajax")->m_material.subsurface = 10.0f;
+                //scene.getMaterial("ajax")->m_material.mfpFromVolumetricCoefficients(glm::vec3(2.19f, 2.62f, 3.f), glm::vec3(0.0021f, 0.0041f, 0.0071f)); // marble
                 scene.getMaterial("ajax")->m_material.meanFreePath = glm::vec3(1.f, 0.2f, 0.1f); // skin
             }
             {
@@ -128,7 +128,7 @@ namespace raven {
 
                 scene.getMaterial("ajax")->m_material.baseColorFactor = glm::vec4(0.83f, 0.79f, 0.75f, 0.f);
                 scene.getMaterial("ajax")->m_material.subsurface = 0.5f;
-                //            scene.getMaterial("ajax")->m_material.mfpFromVolumetricCoefficients(glm::vec3(2.19f, 2.62f, 3.f), glm::vec3(0.0021f, 0.0041f, 0.0071f)); // marble
+                //scene.getMaterial("ajax")->m_material.mfpFromVolumetricCoefficients(glm::vec3(2.19f, 2.62f, 3.f), glm::vec3(0.0021f, 0.0041f, 0.0071f)); // marble
                 scene.getMaterial("ajax")->m_material.meanFreePath = glm::vec3(1.f, 0.2f, 0.1f); // skin
             }
             {
