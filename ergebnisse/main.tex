@@ -2,6 +2,7 @@
 
 \title{ReSTIRSSS Ergebnisse}
 \author{Felix Viering}
+\usepackage{graphicx}
 \begin{document}
 \maketitle
 \section{Versuch}
@@ -14,9 +15,12 @@ die das Rendern eines Frames bei den unterschiedlichen Einstellungen dauert und
 die resultierenden Bilder nach dem Rendern der maximalen Anzahl an Frames verglichen.
 
 \section{Ergebnisse}
-Die Renderzeiten lassen sich aus Tabelle 1 ableiten. 
+Die Renderzeiten lassen sich aus Tabelle \ref{tab:Renderzeiten} ableiten. Figur \ref{fig:Renders}
+zeigt die gerenderten Ergebnisse. Aus den Ergebnissen ist zu erkennen, dass
+Pathtracing schneller Samples berechnet. Allerdings führt es allgemein zu einem
+Ergebnis mit mehr Rauschen im Vergleich zu den anderen beiden Methoden mit ReSTIR.
 \begin{table}
-    \caption{Renderzeiten}\label{tab:}
+    \caption{Renderzeiten}\label{tab:Renderzeiten}
     \begin{center}
         \begin{tabular}[c]{|l|l|l|}
             \hline
@@ -35,9 +39,12 @@ Die Renderzeiten lassen sich aus Tabelle 1 ableiten.
 
 \begin{figure}
     \begin{center}
-        \includegraphics[width=0.95\textwidth]{./PathTracing.png.hdr}
+        \includegraphics[width=\textwidth]{./PathTracing.png}
+        \includegraphics[width=\textwidth]{./ReSTIRHy.png}
+        \includegraphics[width=\textwidth]{./ReSTIRSe.png}\\
     \end{center}
-    \caption{}\label{fig:}
+    \caption{Das Bild nach 2048 gerenderten Frames von oben nach unten mit
+        PathTracing, mit ReSTIR (Hybrid Shift), mit ReSTIR (Sequential Shift)}\label{fig:Renders}
 \end{figure}
 
 
