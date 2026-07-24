@@ -2,7 +2,7 @@
 ![](teaser.png)
 
 ## Introduction
-This repository contains the source code for the HPG 2024 paper:
+This repository is a fork of the repository that contains the source code for the HPG 2024 paper:
 
 > [**ReSTIR Subsurface Scattering for Real-Time Path Tracing**](https://doi.org/10.1145/3675372)<br>
 > [Mirco Werner](https://github.com/MircoWerner), [Vincent Schüßler](https://cg.ivd.kit.edu/schuessler/staff_index.php), and [Carsten Dachsbacher](https://cg.ivd.kit.edu/dachsbacher/staff_index.php)
@@ -23,7 +23,7 @@ This demonstration can be enabled in [`restirsss_defines`](./ReSTIRSSS/resources
 Also see [`probinversetest`](./ReSTIRSSS/resources/shaders/main/restirsss/probinversetest).
 
 ## Requirements
-- Vulkan 1.3
+- Vulkan 1.3 (later Versions not supported)
 - GPU with ray tracing support
 - (optional) [OptiX](https://developer.nvidia.com/designworks/optix/download) 8.0.0 or higher and [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads) for [denoising](https://developer.nvidia.com/optix-denoiser)
 
@@ -36,7 +36,7 @@ Windows is not officially supported, however, we get it to run using MinGW and d
 
 ### Clone and Build
 ```bash
-git clone --recursive git@github.com:MircoWerner/ReSTIR-SSS.git
+git clone --recursive git@github.com:TheGitBot/ReSTIR-SSS.git
 cd ReSTIR-SSS/ReSTIRSSS
 mkdir build
 cd build
