@@ -16,6 +16,7 @@ This repository is a fork of the repository that contains the source code for th
 - ReSTIR SSS target function: [`restirsss_target_function`](./ReSTIRSSS/resources/shaders/main/restirsss/restirsss_target_function.glsl)
 - ReSTIR SSS shifts (reconnection, delayed reconnection, hybrid, sequential) and their Jacobians: [`restirsss_shift`](./ReSTIRSSS/resources/shaders/main/restirsss/restirsss_shift.glsl)
 - MIS weights (generalized balance heuristic, streaming pairwise MIS): [`restirsss_mis`](./ReSTIRSSS/resources/shaders/main/restirsss/restirsss_mis.glsl)
+- Ergebnisse (Results of a simple test confirming the findings of the aforementioned paper): [`ergebnisse`](./ergebnisse/)
 
 Our sequential shift strategy uses *probabilistic inversion* to draw new random numbers before applying random replay when shifting a path with delayed reconnection (see paper Sec. 4.3 for details). 
 We also demonstrate the possibility to use probabilistic inversion in ReSTIR in general to use both path and primary sample space shifts for a certain sample by implementing it in a surface reflection case with a path of length 3 (see supplemental document Sec. 3 for details).
